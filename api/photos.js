@@ -112,6 +112,8 @@ async function handleUpload(req, res) {
     file_size: buffer.length,
   };
 
+  if (body.siteId) insertData.site_id = body.siteId;
+
   const { data: photo, error: dbError } = await supabase
     .from('photos')
     .insert(insertData)

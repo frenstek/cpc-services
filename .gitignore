@@ -12,10 +12,8 @@ dist/
 dist-ssr
 *.local
 .env
-.env.local
-.env.prod
-.env.vercel
-.env.production
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -30,3 +28,41 @@ dist-ssr
 
 .vercel/
 *.log
+
+.vercel
+
+# --- added 26 Oct 2026 backup pass ---
+# build / deps
+node_modules/
+.next/
+dist/
+release/
+out/
+.vercel/
+.turbo/
+.cache/
+*.log
+*.tsbuildinfo
+# secrets - never in git (backed up in the encrypted archive instead)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*keypair*.json
+*wallet*.json
+*wallets*.json
+.*wallet*.json
+id.json
+secrets.json
+pc-secret.txt
+keys/
+# bulky local data
+*.mp4
+*.mov
+*.zip
+*.7z
+*.exe
+*.dmg
+*.AppImage
+*.blockmap

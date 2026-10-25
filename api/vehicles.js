@@ -4,12 +4,16 @@ import { setCors, handleOptions } from './_lib/cors.js';
 // ─── GET Handlers ────────────────────────────────────────────────────────────
 
 async function handleList(req, res) {
-  const { search, status } = req.query;
+  const { search, status, site_id } = req.query;
 
   let query = supabase
     .from('vehicles')
     .select('*')
     .order('created_at', { ascending: false });
+
+  if (site_id) {
+    query = query.eq('site_id', site_id);
+  }
 
   if (search) {
     query = query.ilike('rego', `%${search.trim()}%`);
@@ -125,6 +129,7 @@ async function handleCreate(req, res) {
   if (body.vehicle_type) insertData.vehicle_type = body.vehicle_type.trim();
   if (body.notes) insertData.notes = body.notes.trim();
   if (body.worker_name) insertData.worker_name = body.worker_name.trim();
+  if (body.site_id) insertData.site_id = body.site_id;
 
   const { data: vehicle, error } = await supabase
     .from('vehicles')
@@ -149,7 +154,7 @@ async function handleUpdate(req, res) {
     return res.status(400).json({ error: 'Missing required field: id' });
   }
 
-  const ALLOWED_FIELDS = ['rego', 'bay', 'vehicle_type', 'notes', 'worker_name', 'status', 'completed_at'];
+  const ALLOWED_FIELDS = ['rego', 'bay', 'vehicle_type', 'notes', 'worker_name', 'status', 'completed_at', 'site_id'];
 
   const updates = {};
   for (const key of ALLOWED_FIELDS) {

@@ -22,8 +22,8 @@ async function handleCreate(req, res) {
     return res.status(404).json({ error: 'Vehicle not found' });
   }
 
-  // Generate a unique share token
-  const token = crypto.randomBytes(32).toString('hex');
+  // Generate a short share token (8 chars, URL-safe)
+  const token = crypto.randomBytes(6).toString('base64url').slice(0, 8);
 
   // Default expiry: 30 days from now
   const expiresAt = new Date();
@@ -104,6 +104,32 @@ async function handleGetByToken(req, res) {
     return { ...photo, public_url: null };
   });
 
+  // Fetch signatures
+  const { data: rawSignatures } = await supabase
+    .from('signatures')
+    .select('*')
+    .eq('vehicle_id', vehicle.id)
+    .order('created_at', { ascending: true });
+
+  const signatures = (rawSignatures || []).map(sig => {
+    if (sig.storage_path) {
+      const { data: urlData } = supabase.storage.from('signatures').getPublicUrl(sig.storage_path);
+      return { ...sig, public_url: urlData?.publicUrl || null };
+    }
+    return { ...sig, public_url: null };
+  });
+
+  // Fetch comments/notes for this vehicle
+  let comments = [];
+  try {
+    const { data } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('vehicle_id', vehicle.id)
+      .order('created_at', { ascending: true });
+    if (data) comments = data;
+  } catch {}
+
   // Update view count
   await supabase
     .from('share_links')
@@ -114,7 +140,7 @@ async function handleGetByToken(req, res) {
     .eq('id', shareLink.id);
 
   res.status(200).json({
-    vehicle: { ...vehicle, photos },
+    vehicle: { ...vehicle, photos, signatures, comments },
     share: {
       created_at: shareLink.created_at,
       expires_at: shareLink.expires_at,

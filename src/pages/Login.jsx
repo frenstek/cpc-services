@@ -40,22 +40,20 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    navigate('/dashboard');
+    navigate('/');
   }
 
   return (
     <div className="flex min-h-screen">
       {/* Left panel — branding (desktop only) */}
       <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-[#0A1628] p-12 lg:flex">
-        {/* Grid overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
+        {/* Background image */}
+        <img
+          src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=1200&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/80 via-[#0A1628]/70 to-[#0A1628]" />
 
         {/* Content */}
         <div className="relative z-10">
@@ -206,7 +204,7 @@ export default function Login() {
           {/* QR code login */}
           <button
             type="button"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('/')}
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 active:bg-gray-100"
           >
             <QrCode size={18} />

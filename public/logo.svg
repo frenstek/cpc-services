@@ -1,12 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#0A1628"/>
-  <!-- Camera body -->
-  <rect x="116" y="196" width="280" height="200" rx="24" fill="none" stroke="#3CCBFB" stroke-width="20"/>
-  <!-- Camera lens -->
-  <circle cx="256" cy="296" r="60" fill="none" stroke="#3CCBFB" stroke-width="18"/>
-  <circle cx="256" cy="296" r="28" fill="#3CCBFB" opacity="0.3"/>
-  <!-- Camera top / viewfinder -->
-  <path d="M196 196 L216 156 L296 156 L316 196" fill="none" stroke="#3CCBFB" stroke-width="18" stroke-linejoin="round"/>
-  <!-- Flash -->
-  <circle cx="348" cy="228" r="12" fill="#3CCBFB" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="112" fill="#0A1628"/>
+  <path d="M256 72c-72 0-144 32-144 32v192c0 80 64 128 144 152 80-24 144-72 144-152V104s-72-32-144-32z" fill="#0F1D32" stroke="#3CCBFB" stroke-width="6" stroke-linejoin="round"/>
+  <g transform="translate(156, 195)">
+    <path d="M30 72 C30 72 42 28 58 20 C74 12 126 12 142 20 C158 28 170 72 170 72" fill="none" stroke="#3CCBFB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 72 L184 72 C192 72 196 76 196 84 L196 96 C196 100 192 104 188 104 L12 104 C8 104 4 100 4 96 L4 84 C4 76 8 72 16 72Z" fill="#3CCBFB" opacity="0.15" stroke="#3CCBFB" stroke-width="5"/>
+    <circle cx="56" cy="104" r="18" fill="#0A1628" stroke="#3CCBFB" stroke-width="5"/>
+    <circle cx="56" cy="104" r="7" fill="#3CCBFB" opacity="0.4"/>
+    <circle cx="144" cy="104" r="18" fill="#0A1628" stroke="#3CCBFB" stroke-width="5"/>
+    <circle cx="144" cy="104" r="7" fill="#3CCBFB" opacity="0.4"/>
+    <path d="M62 28 C62 28 68 16 82 16 L118 16 C132 16 138 28 138 28" fill="none" stroke="#3CCBFB" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  <text x="256" y="410" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="72" fill="white" letter-spacing="12">CPC</text>
+  <circle cx="340" cy="170" r="4" fill="#3CCBFB" opacity="0.8"/>
+  <circle cx="360" cy="155" r="3" fill="#3CCBFB" opacity="0.5"/>
+  <circle cx="350" cy="140" r="2.5" fill="#3CCBFB" opacity="0.6"/>
+  <circle cx="370" cy="168" r="2" fill="#3CCBFB" opacity="0.4"/>
 </svg>

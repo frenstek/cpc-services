@@ -1,17 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
+import SiteSelect from './pages/SiteSelect'
 import Capture from './pages/Capture'
-import Vehicles from './pages/Vehicles'
 import VehicleDetail from './pages/VehicleDetail'
-import Zones from './pages/Zones'
-import Checklists from './pages/Checklists'
-import Reports from './pages/Reports'
-import Team from './pages/Team'
-import Issues from './pages/Issues'
 import ShareView from './pages/ShareView'
-import AppLayout from './layouts/AppLayout'
+import SiteLayout from './layouts/SiteLayout'
+import SiteOverview from './pages/site/SiteOverview'
+import SiteVehicles from './pages/site/SiteVehicles'
+import SitePhotos from './pages/site/SitePhotos'
+import SiteDocuments from './pages/site/SiteDocuments'
+import SiteNotes from './pages/site/SiteNotes'
+import VehicleHistory from './pages/site/VehicleHistory'
 
 export default function App() {
   return (
@@ -19,17 +19,20 @@ export default function App() {
       <Route path="/landing" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/share/:token" element={<ShareView />} />
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/capture" element={<Capture />} />
-        <Route path="/vehicles" element={<Vehicles />} />
-        <Route path="/vehicles/:id" element={<VehicleDetail />} />
-        <Route path="/zones" element={<Zones />} />
-        <Route path="/checklists" element={<Checklists />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/issues" element={<Issues />} />
+
+      {/* Home = Site Selection */}
+      <Route path="/" element={<SiteSelect />} />
+
+      {/* Site-scoped routes */}
+      <Route path="/site/:siteId" element={<SiteLayout />}>
+        <Route index element={<SiteOverview />} />
+        <Route path="capture" element={<Capture />} />
+        <Route path="vehicles" element={<SiteVehicles />} />
+        <Route path="vehicles/history" element={<VehicleHistory />} />
+        <Route path="vehicles/:id" element={<VehicleDetail />} />
+        <Route path="photos" element={<SitePhotos />} />
+        <Route path="documents" element={<SiteDocuments />} />
+        <Route path="notes" element={<SiteNotes />} />
       </Route>
     </Routes>
   )

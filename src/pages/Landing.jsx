@@ -23,10 +23,10 @@ const values = [
 ]
 
 const steps = [
-  { n: '01', Icon: Car, title: 'Vehicle Arrives', body: 'Car arrives at the cleaning station. Worker scans the registration plate.' },
-  { n: '02', Icon: Camera, title: 'Before Photos', body: 'Guided checklist prompts photos of every angle. Pre-existing damage is flagged.' },
-  { n: '03', Icon: Workflow, title: 'Clean & Inspect', body: 'Complete the clean. App tracks the job and time spent on each vehicle.' },
-  { n: '04', Icon: Image, title: 'After Photos', body: 'Capture after photos. Full before/after comparison stored with the vehicle record.' },
+  { n: '01', Icon: Car, title: 'Vehicle Arrives', body: 'Car arrives at the cleaning station. Worker scans the registration plate.', img: 'https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=600&q=80&auto=format&fit=crop' },
+  { n: '02', Icon: Camera, title: 'Before Photos', body: 'Guided checklist prompts photos of every angle. Pre-existing damage is flagged.', img: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=600&q=80&auto=format&fit=crop' },
+  { n: '03', Icon: Workflow, title: 'Clean & Inspect', body: 'Complete the clean. App tracks the job and time spent on each vehicle.', img: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&q=80&auto=format&fit=crop' },
+  { n: '04', Icon: Image, title: 'After Photos', body: 'Capture after photos. Full before/after comparison stored with the vehicle record.', img: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=80&auto=format&fit=crop' },
 ]
 
 const checklist = [
@@ -59,8 +59,14 @@ export default function Landing() {
       </nav>
 
       {/* ────────── HERO ────────── */}
-      <section className="bg-black px-6 pb-28 pt-44">
-        <div className="mx-auto max-w-[900px] text-center">
+      <section className="relative overflow-hidden bg-black px-6 pb-28 pt-44">
+        <img
+          src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=1600&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black" />
+        <div className="relative z-10 mx-auto max-w-[900px] text-center">
           <p className="mb-12 text-[11px] font-bold uppercase tracking-[0.35em] text-brand-400">
             CPC Services Pty Ltd.
           </p>
@@ -82,7 +88,7 @@ export default function Landing() {
         </div>
 
         {/* Phone Mockup */}
-        <div className="mx-auto mt-20 max-w-[270px]">
+        <div className="relative z-10 mx-auto mt-20 max-w-[270px]">
           <div className="rounded-[40px] border border-white/5 bg-[#111] p-2.5">
             <div className="overflow-hidden rounded-[32px] bg-[#0a0a0a] px-5 pb-6 pt-5">
               <div className="mb-5 flex items-center gap-2.5">
@@ -140,11 +146,25 @@ export default function Landing() {
             </div>
           ))}
         </div>
+        <div className="mx-auto mt-16 max-w-4xl overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1600&q=80&auto=format&fit=crop"
+            alt="Airport terminal at dusk"
+            className="h-64 w-full object-cover"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* ────────── WHY IT MATTERS ────────── */}
-      <section className="bg-black px-6 py-28">
-        <div className="mx-auto grid max-w-[1100px] gap-16 sm:grid-cols-3">
+      <section className="relative overflow-hidden bg-black px-6 py-28">
+        <img
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.07]"
+          loading="lazy"
+        />
+        <div className="relative z-10 mx-auto grid max-w-[1100px] gap-16 sm:grid-cols-3">
           {values.map(({ Icon, title, body }) => (
             <div key={title} className="text-center">
               <Icon size={36} className="mx-auto mb-8 text-brand-400" strokeWidth={1.5} />
@@ -196,8 +216,11 @@ export default function Landing() {
           </div>
 
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(({ n, Icon, title, body }) => (
+            {steps.map(({ n, Icon, title, body, img }) => (
               <div key={n} className="text-center">
+                <div className="mb-6 overflow-hidden rounded-2xl">
+                  <img src={img} alt={title} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                </div>
                 <span className="mb-7 block font-mono text-7xl font-extrabold leading-none text-brand-400/15">{n}</span>
                 <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-[14px] bg-black">
                   <Icon size={24} className="text-brand-400" />
@@ -211,8 +234,15 @@ export default function Landing() {
       </section>
 
       {/* ────────── CTA ────────── */}
-      <section className="bg-black px-6 py-28">
-        <div className="mx-auto max-w-[640px] text-center">
+      <section className="relative overflow-hidden bg-black px-6 py-28">
+        <img
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-15"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80" />
+        <div className="relative z-10 mx-auto max-w-[640px] text-center">
           <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Ready to protect your team?
           </h2>

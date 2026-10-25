@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/reports.js": {
+      "maxDuration": 60
+    }
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
